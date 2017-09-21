@@ -22,11 +22,12 @@ class IpLimit
             'Request-Already' => $this->ipLimit($request)->getLimit() - $this->ipLimit($request)->getCount()
         ];
         if ($this->ipLimit($request)->hasTooManyAttempts($request)) {
-            return response([
+            /*return response([
                 'data' => '访问次数限制!',
                 'code' => 429,
                 'status_code' => 429,
-            ],429, $headers);
+            ],429, $headers);*/
+			return response('访问次数限制!',429, $headers);
         }
         return $next($request);
     }
